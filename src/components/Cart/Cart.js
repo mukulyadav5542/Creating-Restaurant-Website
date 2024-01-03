@@ -8,7 +8,7 @@ const Cart = (props) => {
 
 
   let totalAmount = 0;
-  const addItems = (item) => {
+  const addedItems = (item) => {
     console.log(item, "sum");
     cartCntx.addItem({ ...item , quantity: Number(item.quantity) + 1});
   }
@@ -38,7 +38,7 @@ const Cart = (props) => {
               <td>{item.price}</td>
               <td>{item.quantity}</td>
               <td onClick={()=>removeItem(item)}><button className={classes.button}>-</button></td>
-              <td onClick={()=>addItems(item)}><button className={classes.button}>+</button></td>
+              <td onClick={()=>addedItems(item)}><button className={classes.button}>+</button></td>
             </tr>)
           })}
         </tbody>
