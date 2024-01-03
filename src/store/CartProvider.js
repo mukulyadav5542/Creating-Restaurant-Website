@@ -12,14 +12,40 @@ const CartProvider = (props) => {
 
     if (ind > -1) {
       let arr = [...items];
-      arr[ind]["quantity"] = Number(arr[ind]["quantity"]) + Number(item.quantity);
+      arr[ind]["quantity"] = Number(arr[ind]["quantity"]) + 1;
       updateItems([...arr]);
     } else {
       updateItems([...items, item]);
     }
   };
 
-  const removeItemFromCartHandler = (id) => {};
+  const removeItemFromCartHandler = (oldItem) => {
+
+    updateItems(prevItem=>{
+      const dnewItem=prevItem.map(citem=>{
+        
+        
+        if (citem.id===oldItem.id){
+          
+          const newItem={...citem}
+          newItem.quantity=citem.quantity-1
+          if (newItem.quantity<=0){
+            return undefined
+          }
+          return newItem
+        }
+        else{
+          return citem
+        }
+      })
+
+      
+      const xItem=dnewItem.filter(item=>item!==undefined)
+      
+      return xItem
+    })
+    
+  };
 
   const cartContext = {
     items: items,

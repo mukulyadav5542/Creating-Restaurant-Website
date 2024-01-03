@@ -18,7 +18,6 @@ const MealItemForm = (props) => {
     // cartCtx.items.push(props.item);
     const quantity = document.getElementById("amount_" +props.id).value;
     console.log(quantity,props.item,'props.item');
-    alert(".addItem");
     cartCtx.addItem({ ...props.item , quantity: quantity});
     console.log('after addItemToCart',{ ...props.item , quantity: Number(quantity)}, cartCtx);
   }
