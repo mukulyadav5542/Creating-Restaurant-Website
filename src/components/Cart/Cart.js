@@ -5,7 +5,19 @@ import CartContext from "../../store/cart-context";
 
 const Cart = (props) => {
   const cartCntx = useContext(CartContext);
+
+
   let totalAmount = 0;
+  const addItems = (item) => {
+    console.log(item, "sum");
+    cartCntx.addItem({ ...item , quantity: Number(item.quantity) + 1});
+  }
+
+  console.log(cartCntx, "sum");
+
+  const removeItem = (item) => {
+    cartCntx.removeItem({ ...item, quantity: Number(item.quantity) - 1});
+  }
   const cartItems = (
     <ul className={classes["cart-items"]}>
       <table className="table mb-2">
@@ -25,6 +37,8 @@ const Cart = (props) => {
               <td>{item.name}</td>
               <td>{item.price}</td>
               <td>{item.quantity}</td>
+              <td onClick={()=>removeItem(item)}><button className={classes.button}>-</button></td>
+              <td onClick={()=>addItems(item)}><button className={classes.button}>+</button></td>
             </tr>)
           })}
         </tbody>

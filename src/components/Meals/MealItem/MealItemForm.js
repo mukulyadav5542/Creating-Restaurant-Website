@@ -18,8 +18,8 @@ const MealItemForm = (props) => {
     // cartCtx.items.push(props.item);
     const quantity = document.getElementById("amount_" +props.id).value;
     console.log(quantity,props.item,'props.item');
+    alert(".addItem");
     cartCtx.addItem({ ...props.item , quantity: quantity});
-    cartCtx.items = [9.8,6]
     console.log('after addItemToCart',{ ...props.item , quantity: Number(quantity)}, cartCtx);
   }
 
